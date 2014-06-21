@@ -1,13 +1,14 @@
-## This is Ying Li's submission for Assignment 2 for R Programming 
-## The assignment is to write an R function that is able to cache potentially time-consuming computations
-## The specific computation to be cached is the inverse of a matrix
-## We assume for this assignment the matrix passed to the function is always invertible
-## I followed the mean caching example given by instructor, substituted out the relevant pieces
+## This is Ying Li's submission for Assignment 2 for R Programming.
+## The assignment is to write an R function that is able to cache potentially time-consuming computations.
+## The specific computation to be cached is the inverse of a matrix.
+## We assume for this assignment the matrix passed to the function is always invertible.
+## I followed the mean caching example given by instructor, substituted out the relevant pieces.
 ## The R characteristics that was taken advantage of in this assignment is Lexical Scoping. 
 
 ## makeCacheMatrix creates a special "matrix" object that can cache its inverse.
 
 makeCacheMatrix <- function(x = matrix()) {
+        ## Return a special "matrix" object that can cache its inverse
         inv <- NULL
         set <- function(y) {	
                 x <<- y
@@ -39,3 +40,14 @@ cacheSolve <- function(x, ...) {
         x$setinverse(inv)
         inv
 }
+
+
+## code to test the functions:
+## source("cachematrix.R")
+## set.seed(10)
+## a1<-matrix(rnorm(100, 7,5), 10, 10)
+## a2<-matrix(rnorm(100, 7,5), 10, 10)
+## w1<- makeCacheMatrix(a1)
+## v1<- cacheSolve(w1)
+## w2<- makeCacheMatrix(a2)
+## v2<- cacheSolve(w2)
